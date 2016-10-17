@@ -8,17 +8,17 @@
   "homepage": "https://github.com/ReactTraining/react-router#readme",
   "bugs": "https://github.com/ReactTraining/react-router/issues",
   "scripts": {
-    "install": "npm run build",
+    "postinstall": "npm run build",
     "build": "npm run build-cjs && npm run build-es",
-    "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib --ignore '__tests__'",
-    "build-es": "rimraf es6 && cross-env BABEL_ENV=es babel ./modules -d es6 --ignore '__tests__'",
-    "build-umd": "cross-env NODE_ENV=development webpack modules/index.js umd/ReactRouter.js",
-    "build-min": "cross-env NODE_ENV=production webpack -p modules/index.js umd/ReactRouter.min.js",
-    "lint": "eslint examples modules scripts tools *.js",
+    "build-cjs": "node_modules/.bin/rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib --ignore '__tests__'",
+    "build-es": "node_modules/.bin/rimraf es6 && cross-env BABEL_ENV=es babel ./modules -d es6 --ignore '__tests__'",
+    "build-umd": "node_modules/.bin/cross-env NODE_ENV=development webpack modules/index.js umd/ReactRouter.js",
+    "build-min": "node_modules/.bin/cross-env NODE_ENV=production webpack -p modules/index.js umd/ReactRouter.min.js",
+    "lint": "node_modules/.bin/eslint examples modules scripts tools *.js",
     "start": "node examples/server.js",
     "test": "npm run lint && npm run test-node && npm run test-browser",
-    "test-browser": "cross-env NODE_ENV=test karma start",
-    "test-node": "cross-env NODE_ENV=test mocha --compilers js:babel-register tests.node.js"
+    "test-browser": "node_modules/.bin/cross-env NODE_ENV=test karma start",
+    "test-node": "node_modules/.bin/cross-env NODE_ENV=test mocha --compilers js:babel-register tests.node.js"
   },
   "authors": [
     "Ryan Florence",
