@@ -8,13 +8,19 @@ export function isReactChildren(object) {
   return isValidChild(object) || (Array.isArray(object) && object.every(isValidChild))
 }
 
-function createRoute(defaultProps, props) {
-  return { ...defaultProps, ...props }
+function createRoute(defaultProps, props, parentProps) {
+  let cloneParentProps = Object.assign({}, (parentProps || {}));
+
+  [ 'children', 'path', 'component', 'to', 'indexRoute', 'query', 'onEnter' ].forEach(function (key) {
+    delete cloneParentProps[key]
+  })
+
+  return Object.assign({}, cloneParentProps, defaultProps, props)
 }
 
-export function createRouteFromReactElement(element) {
+export function createRouteFromReactElement(element, parentProps) {
   const type = element.type
-  const route = createRoute(type.defaultProps, element.props)
+  const route = createRoute(type.defaultProps, element.props, parentProps)
 
   if (route.children) {
     const childRoutes = createRoutesFromReactChildren(route.children, route)
