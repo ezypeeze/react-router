@@ -16,7 +16,7 @@ const IndexRedirect = React.createClass({
     createRouteFromReactElement(element, parentRoute) {
       /* istanbul ignore else: sanity check */
       if (parentRoute) {
-        parentRoute.indexRoute = Redirect.createRouteFromReactElement(element)
+        parentRoute.indexRoute = Redirect.createRouteFromReactElement(element, parentRoute)
       } else {
         warning(
           false,

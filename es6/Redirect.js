@@ -21,8 +21,8 @@ var Redirect = React.createClass({
 
 
   statics: {
-    createRouteFromReactElement: function createRouteFromReactElement(element) {
-      var route = _createRouteFromReactElement(element);
+    createRouteFromReactElement: function createRouteFromReactElement(element, parentRoute) {
+      var route = _createRouteFromReactElement(element, parentRoute);
 
       if (route.from) route.path = route.from;
 

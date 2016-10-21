@@ -20,7 +20,7 @@ var IndexRedirect = React.createClass({
     createRouteFromReactElement: function createRouteFromReactElement(element, parentRoute) {
       /* istanbul ignore else: sanity check */
       if (parentRoute) {
-        parentRoute.indexRoute = Redirect.createRouteFromReactElement(element);
+        parentRoute.indexRoute = Redirect.createRouteFromReactElement(element, parentRoute);
       } else {
         process.env.NODE_ENV !== 'production' ? warning(false, 'An <IndexRedirect> does not make sense at the root of your route config') : void 0;
       }

@@ -16,9 +16,9 @@ const { string, object } = React.PropTypes
 const Redirect = React.createClass({
 
   statics: {
-    
-    createRouteFromReactElement(element) {
-      const route = createRouteFromReactElement(element)
+
+    createRouteFromReactElement(element, parentRoute) {
+      const route = createRouteFromReactElement(element, parentRoute)
 
       if (route.from)
         route.path = route.from
